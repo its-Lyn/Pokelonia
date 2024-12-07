@@ -15,6 +15,7 @@
     <Window.Styles>
         <StyleInclude Source="/Styles/PokeCard.axaml"/>
         <StyleInclude Source="/Styles/PokeType.axaml"/>
+        <StyleInclude Source="/Styles/Buttons.axaml"/>
     </Window.Styles>
     
     <Design.DataContext>
@@ -28,23 +29,31 @@
             <TextBlock Text="Pokelonia" FontSize="20" FontWeight="Bold" DockPanel.Dock="Left" VerticalAlignment="Center"/>
             
             <!-- Right -->
-            <Button IsEnabled="{Binding LastEnabled}" Command="{Binding LoadLastPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 5, 0">
-                <TextBlock Text="Last"/>
+            <Button Classes="ActionButton" IsEnabled="{Binding LastEnabled}" Command="{Binding LoadLastPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                <Image Source="/Assets/last.png" Width="25"/>
             </Button>
             
-            <Button IsEnabled="{Binding NextEnabled}" Command="{Binding LoadNextPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <TextBlock Text="Next"/>
+            <Button Classes="ActionButton" IsEnabled="{Binding NextEnabled}" Command="{Binding LoadNextPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Image Source="/Assets/next.png" Width="25"/>
             </Button>
             
-            <Button IsEnabled="{Binding PreviousEnabled}" Command="{Binding LoadPreviousPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <TextBlock Text="Prev"/>    
+            <Button Classes="ActionButton" IsEnabled="{Binding PreviousEnabled}" Command="{Binding LoadPreviousPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Image Source="/Assets/next.png" Width="25">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
             
-            <Button IsEnabled="{Binding FirstEnabled}" Command="{Binding LoadFirstPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <TextBlock Text="First"/>
+            <Button Classes="ActionButton" IsEnabled="{Binding FirstEnabled}" Command="{Binding LoadFirstPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Image Source="/Assets/last.png" Width="25">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
             
-            <TextBlock Text="{Binding PageText}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBlock Margin="0, 0, 20, 0" Text="{Binding PageText}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
         </DockPanel>
         
         <ScrollViewer Grid.Row="1">
@@ -59,7 +68,7 @@
                     <DataTemplate DataType="vm:PageEntryViewModel">
                         <Border Classes="Card" Margin="10">
                             <StackPanel>
-                                <TextBlock FontSize="18" Padding="0, 10, 0, 0" FontWeight="Bold" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock FontSize="18" Padding="10, 10, 10, 0" FontWeight="Bold" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <Image Source="{Binding Image}" MinWidth="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                
                                 <ring:ProgressRing Opacity="0.5" Margin="0, 40, 0, 0" Width="50" Height="50" IsVisible="{Binding !Loaded}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>

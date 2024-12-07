@@ -40,7 +40,7 @@ public partial class MainWindowViewModel : ViewModelBase
             Results.Add(new PageEntryViewModel(entry));
 
         PageCount = (int)MathF.Ceiling((float)_currentPage.Count / Limit);
-        PageText = $"{CurrentPageIndex}/{PageCount}";
+        PageText = $"Page {CurrentPageIndex}/{PageCount}";
     }
 
     private void Clear()
@@ -54,7 +54,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Clear();
 
         CurrentPageIndex = 1;
-        PageText = $"{CurrentPageIndex}/{PageCount}";
+        PageText = $"Page {CurrentPageIndex}/{PageCount}";
 
         PreviousEnabled = false;
         FirstEnabled = false;
@@ -72,7 +72,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Clear();
 
         CurrentPageIndex = PageCount;
-        PageText = $"{CurrentPageIndex}/{PageCount}";
+        PageText = $"Page {CurrentPageIndex}/{PageCount}";
 
         PreviousEnabled = true;
         FirstEnabled = true;
@@ -91,7 +91,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Clear();
 
         CurrentPageIndex--;
-        PageText = $"{CurrentPageIndex}/{PageCount}";
+        PageText = $"Page {CurrentPageIndex}/{PageCount}";
 
         if (CurrentPageIndex == 1)
             FirstEnabled = false;
@@ -120,7 +120,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Clear();
 
         CurrentPageIndex++;
-        PageText = $"{CurrentPageIndex}/{PageCount}";
+        PageText = $"Page {CurrentPageIndex}/{PageCount}";
 
         if (CurrentPageIndex > 1)
             FirstEnabled = true;
