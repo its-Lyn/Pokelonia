@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Pokelonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ring="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pokelonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Background="#303446"
+        Foreground="#c6d0f5"
+        Icon="/Assets/logo.png"
+        Title="Pokelonia">
+    
+    <Window.Styles>
+        <StyleInclude Source="/Styles/PokeCard.axaml"/>
+        <StyleInclude Source="/Styles/PokeType.axaml"/>
+    </Window.Styles>
+    
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto, *">
+        <DockPanel Grid.Row="0">
+            <!-- Left -->
+            <Image Source="/Assets/logo.png" MaxHeight="40" DockPanel.Dock="Left" Margin="4"/>
+            <TextBlock Text="Pokelonia" FontSize="20" FontWeight="Bold" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+            
+            <!-- Right -->
+            <Button IsEnabled="{Binding LastEnabled}" Command="{Binding LoadLastPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                <TextBlock Text="Last"/>
+            </Button>
+            
+            <Button IsEnabled="{Binding NextEnabled}" Command="{Binding LoadNextPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock Text="Next"/>
+            </Button>
+            
+            <Button IsEnabled="{Binding PreviousEnabled}" Command="{Binding LoadPreviousPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock Text="Prev"/>    
+            </Button>
+            
+            <Button IsEnabled="{Binding FirstEnabled}" Command="{Binding LoadFirstPageCommand}" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock Text="First"/>
+            </Button>
+            
+            <TextBlock Text="{Binding PageText}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        </DockPanel>
+        
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding Results}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="vm:PageEntryViewModel">
+                        <Border Classes="Card" Margin="10">
+                            <StackPanel>
+                                <TextBlock FontSize="18" Padding="0, 10, 0, 0" FontWeight="Bold" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Image Source="{Binding Image}" MinWidth="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                               
+                                <ring:ProgressRing Opacity="0.5" Margin="0, 40, 0, 0" Width="50" Height="50" IsVisible="{Binding !Loaded}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                
+                                <ItemsControl ItemsSource="{Binding PokeTypes}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    
+                                   <ItemsControl.ItemTemplate>
+                                       <DataTemplate DataType="vm:TypeViewModel">
+                                           <Border Classes="Type" Margin="4 , 0">
+                                               <StackPanel>
+                                                   <TextBlock Text="{Binding TypeName}" Foreground="White" Padding="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                               </StackPanel> 
+                                           </Border>
+                                       </DataTemplate>
+                                   </ItemsControl.ItemTemplate> 
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
