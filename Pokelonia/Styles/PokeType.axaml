@@ -1,12 +1,12 @@
-<Styles 
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<Styles
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 >
-    <Style Selector="Border.Type">
-        <Setter Property="Background" Value="Black"/>
-        <Setter Property="CornerRadius" Value="5"/>
-        
-        <Setter Property="MinWidth" Value="40"/>
-        <Setter Property="MinHeight" Value="20"/>
-    </Style>
+  <Style Selector="Border.Type">
+    <Setter Property="Background" Value="Black" />
+    <Setter Property="CornerRadius" Value="5" />
+
+    <Setter Property="MinWidth" Value="40" />
+    <Setter Property="MinHeight" Value="20" />
+  </Style>
 </Styles>
