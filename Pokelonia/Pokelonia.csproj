@@ -37,4 +37,8 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\PokeCard.axaml" />
+  </ItemGroup>
 </Project>
