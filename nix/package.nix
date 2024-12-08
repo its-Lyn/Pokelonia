@@ -7,7 +7,7 @@
 }:
 buildDotnetModule {
   pname = "Pokelonia";
-  version = "0.4.0";
+  version = "0.5.0";
 
   dotnet-sdk = dotnetCorePackages.dotnet_9.sdk;
   dotnet-runtime = dotnetCorePackages.dotnet_9.runtime;

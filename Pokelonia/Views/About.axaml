@@ -1,0 +1,42 @@
+<Window
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="600"
+  x:Class="Pokelonia.Views.About"
+
+  Width="450"
+  Height="600"
+
+  Title="About Pokelonia"
+  Icon="/Assets/logo.png"
+  CanResize="False"
+
+  Background="#303446"
+  Foreground="#c6d0f5"
+>
+  <Grid>
+    <StackPanel VerticalAlignment="Top">
+      <TextBlock Text="Pokelonia" Foreground="#f4b8e4" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" Margin="0, 20, 0, 0"/>
+      <TextBlock Text="Little PokeDex! (Version 0.5.0)" HorizontalAlignment="Center" Opacity="0.3"/>
+    </StackPanel>
+
+    <StackPanel VerticalAlignment="Center">
+      <TextBlock Text="Programmers" Foreground="#f4b8e4" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 0"/>
+      <TextBlock Text="Evelyn" Margin="0, 5, 0, 0" HorizontalAlignment="Center"/>
+
+      <TextBlock Text="API Credits" Foreground="#f4b8e4" FontWeight="Bold" FontSize="20" Margin="0, 20, 0, 0" HorizontalAlignment="Center"/>
+      <TextBlock Text="PokeAPI (pokeapi.co)" Margin="0, 5, 0, 0" HorizontalAlignment="Center"/>
+
+      <TextBlock Text="License" Foreground="#f4b8e4" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0, 20, 0, 0"/>
+      <TextBlock Text="MIT" Margin="0, 5, 0, 0" HorizontalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel VerticalAlignment="Bottom">
+      <Button Click="Button_OnClick" HorizontalAlignment="Center" Margin="0, 0, 0, 10" CornerRadius="10">
+        <TextBlock Text="Close" Foreground="#c6d0f5" HorizontalAlignment="Center"/>
+      </Button>
+    </StackPanel>
+  </Grid>
+</Window>
